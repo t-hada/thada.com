@@ -1,47 +1,36 @@
-<html lang="ja">
+<!doctype html><html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About — thada</title>
-  <meta name="description" content="About thada" />
-  <link rel="stylesheet" href="/assets/style.css">
-  <link rel="icon" href="data:,">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About — thada's note</title>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="/">thada's note</a>
-    <nav class="nav">
-      <a href="/index.html">Notes</a>
-      <a href="/about.html" aria-current="page">About</a>
-    </nav>
-  </header>
+<header class="header">
+  <nav class="nav">
+    <a class="brand" href="index.html">thada's note</a>
+    <div class="spacer"></div>
+    <a href="index.html">Notes</a>
+    <a href="about.html" aria-current="page">About</a>
+  </nav>
+</header>
 
-  <main class="container">
-    <article class="card">
-      <h1 class="page-title">About</h1>
-      <p>（ここに自己紹介。研究関心・現在地・連絡先。Markdown を HTML に貼る想定）</p>
-      <dl class="kv">
-        <div><dt>関心</dt><dd>スピーチ処理 / 公共政策 / 写真 / 旅行</dd></div>
-        <div><dt>現在</dt><dd>Pixie Dust Technologies — ML / 話者分離・追跡</dd></div>
-      </dl>
+<main class="container prose">
+  <h1>羽田 翼 / Tsubasa Hada</h1>
+  <p class="subtle">スピーチ処理 / 公共政策 / 統計・機械学習 / 宗教史。情緒と尊さの保存を主題に。</p>
 
-      <div class="links">
-        <a class="btn" href="https://github.com/" rel="me" target="_blank">GitHub</a>
-        <a class="btn" href="https://twitter.com/" rel="me" target="_blank">Twitter</a>
-        <a class="btn" href="mailto:example@example.com">Email</a>
-      </div>
-    </article>
-  </main>
+  <h2>現在</h2>
+  <ul>
+    <li>Pixie Dust Technologies — 話者分離・話者追跡の実装・評価</li>
+    <li>研究メモ：ASR の頑健化、液体性ネットワーク、UX（左利き）</li>
+  </ul>
 
-  <footer class="site-footer">
-    <div class="left">© <span id="year2"></span> thada</div>
-    <div class="right social">
-      <a href="https://github.com/" aria-label="GitHub" class="icon" rel="me">${svg.github}</a>
-      <a href="https://twitter.com/" aria-label="Twitter" class="icon" rel="me">${svg.twitter}</a>
-      <a href="mailto:example@example.com" aria-label="Email" class="icon">${svg.mail}</a>
-    </div>
-  </footer>
+  <h2>リンク</h2>
+  <p>
+    <a class="button" href="https://github.com/">GitHub</a>
+    <a class="button" href="https://x.com/">X (Twitter)</a>
+    <a class="button" href="mailto:you@example.com">Email</a>
+  </p>
+</main>
 
-  <script>document.getElementById('year2').textContent = new Date().getFullYear();</script>
-</body>
-</html>
+<footer class="container footer">© 2025 thada</footer>
+</body></html>
