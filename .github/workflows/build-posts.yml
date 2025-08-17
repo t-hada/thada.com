@@ -1,0 +1,38 @@
+name: Build posts.json
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'notes/**/*.md'
+      - 'tools/generate_posts_json.py'
+      - '.github/workflows/build-posts.yml'
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # ← これが大事（GITHUB_TOKEN でコミットする）
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # git 最終コミット時刻で日付推定するため
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: pip install pyyaml
+      - name: Generate posts.json
+        run: |
+          python tools/generate_posts_json.py
+      - name: Commit & push if changed
+        run: |
+          if ! git diff --quiet -- posts.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add posts.json
+            git commit -m "chore: update posts.json [skip ci]"
+            git push
+          else
+            echo "no changes"
+          fi
