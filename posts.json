@@ -7,7 +7,7 @@
     "excerpt": "黒ベースの簡易ブログ兼ノート。Markdown を置くだけで更新。"
   },
   {
-    "slug": "test",
+    "slug": "pca",
     "title": "PCA白色化に付いて理解する",
     "date": "2025-08-17",
     "tags": ["image recognition", "Preprocessing"],
