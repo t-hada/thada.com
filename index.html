@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>あなたの名前 — 情緒と知のアーカイブ</title>
+<meta name="description" content="情緒と知を同軸に保存する個人アーカイブ。メモ、エッセイ、プロジェクトをここに。" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
+
+<!-- Open Graph (編集してください) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="あなたの名前 — 情緒と知のアーカイブ" />
+<meta property="og:description" content="学びの断片と長文、プロジェクトを並べる個人サイト。" />
+<meta property="og:image" content="/assets/og-image.png" />
+<meta property="og:url" content="https://yourdomain.example/" />
+
+<!-- Basic styling (single-file) -->
+<style>
+:root{
+  --bg: #0f1113;
+  --card: #0f1316;
+  --text: #e6eef3;
+  --muted: #9aa6b2;
+  --accent: #c37b55; /* 温かいアクセント */
+  --max-width: 960px;
+  --radius: 12px;
+  --gap: 1.1rem;
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: linear-gradient(180deg,#071014 0%, #0a0d10 60%);
+  color:var(--text);
+  line-height:1.6;
+  padding:2rem 1rem;
+  display:flex;
+  justify-content:center;
+}
+.container{
+  width:100%;
+  max-width:var(--max-width);
+}
+/* Header / Nav */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--gap);
+  margin-bottom:1.25rem;
+}
+.brand{
+  display:flex;
+  gap:.75rem;
+  align-items:center;
+  text-decoration:none;
+  color:var(--text);
+}
+.logo{
+  width:48px;height:48px;border-radius:10px;
+  background:linear-gradient(135deg, rgba(195,123,85,.15), rgba(195,123,85,.05));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent);font-weight:700;font-size:1.1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.45);
+}
+.nav{
+  display:flex;
+  gap:1rem;
+  align-items:center;
+}
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:0.95rem;
+  padding:.45rem .6rem;
+  border-radius:8px;
+}
+.nav a:hover{color:var(--text);background:rgba(255,255,255,0.02)}
+.hamburger{display:none}
+
+/* Hero */
+.hero{
+  background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+  border-radius:var(--radius);
+  padding:1.25rem;
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap:1rem;
+  align-items:center;
+  margin-bottom:1rem;
+  border:1px solid rgba(255,255,255,0.02);
+}
+.hero h1{margin:0;font-size:1.35rem;letter-spacing:-0.02em}
+.hero p{margin:.4rem 0 0;color:var(--muted)}
+
+/* Layout columns */
+.main{
+  display:grid;
+  grid-template-columns: 1fr 320px;
+  gap:1rem;
+  align-items:start;
+}
+@media (max-width:880px){
+  .main{ grid-template-columns: 1fr; }
+  .nav{ display:none }
+  .hamburger{ display:block; background:none;border:none;color:var(--muted); font-size:1.1rem; }
+}
+
+/* Cards */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  border-radius:12px;
+  padding:1rem;
+  border: 1px solid rgba(255,255,255,0.02);
+  box-shadow: 0 6px 18px rgba(2,6,10,0.45);
+}
+.section-title{font-size:1.05rem;margin:0 0 .6rem 0;color:var(--text)}
+
+/* Lists */
+.card-list{display:flex;flex-direction:column;gap:.6rem}
+.note-card{
+  display:flex;flex-direction:column;
+  gap:.3rem;padding:.6rem;border-radius:10px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  border:1px solid rgba(255,255,255,0.02);
+}
+.note-meta{font-size:.82rem;color:var(--muted);display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* Sidebar */
+.sidebar{display:flex;flex-direction:column;gap:1rem}
+.link-list{display:flex;flex-direction:column;gap:.45rem}
+.link-list a{color:var(--muted);text-decoration:none;padding:.45rem;border-radius:8px}
+.link-list a:hover{color:var(--text);background:rgba(255,255,255,0.02)}
+
+/* Footer */
+.footer{margin-top:1.25rem;color:var(--muted);font-size:.9rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+
+/* small helpers */
+.kv{font-weight:600;color:var(--accent)}
+.small{font-size:.9rem;color:var(--muted)}
+.btn{
+  display:inline-block;padding:.5rem .7rem;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text);text-decoration:none;font-size:.95rem;
+}
+</style>
+</head>
+<body>
+  <div class="container" id="page">
+    <header class="header" role="banner">
+      <a href="#top" class="brand" aria-label="ホーム">
+        <div class="logo">N</div>
+        <div>
+          <div style="font-weight:700">あなたの名前</div>
+          <div style="font-size:0.85rem;color:var(--muted)">情緒と知を編むアーカイブ</div>
+        </div>
+      </a>
+
+      <nav class="nav" role="navigation" aria-label="主要メニュー">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#notes">Notes</a>
+        <a href="#projects">Projects</a>
+        <a href="#links">Links</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="hamburger" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+    </header>
+
+    <main>
+      <section class="hero card" id="home" aria-labelledby="hero-title">
+        <div>
+          <h1 id="hero-title">情緒と知のアーカイブ</h1>
+          <p>学びの断片（Notes）と深い考察（Essays）、実装（Projects）を一つの流れにまとめる場。</p>
+
+          <p style="margin-top:.8rem;"><a class="btn" href="#notes">最新のメモを見る</a> <a class="btn" href="#projects" style="margin-left:.5rem">プロジェクト</a></p>
+        </div>
+
+        <div style="text-align:right">
+          <!-- ここにプロフィールの小さな画像や短文を入れてください -->
+          <div class="card" style="padding:.7rem; display:inline-block; min-width:180px;">
+            <div style="font-weight:700">簡潔な自己紹介</div>
+            <div class="small" style="margin-top:.4rem">研究者・技術者・情緒保持者。学びを断片化して保存します。</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="main" style="margin-top:1rem;">
+        <!-- 主コンテンツ -->
+        <div>
+          <!-- About -->
+          <section id="about" class="card" aria-labelledby="about-title" style="margin-bottom:1rem;">
+            <h2 id="about-title" class="section-title">About — 私について</h2>
+            <!-- ここに長めの自己紹介文（Markdown を HTML に変換して貼れば良い） -->
+            <p class="small">（ここに「僕とは何か」「現在の関心」「経歴の要約」などを入れてください。）</p>
+            <dl style="margin-top:.6rem;color:var(--muted);font-size:.95rem">
+              <div><dt class="kv">関心</dt><dd>スピーチ処理 / 公共政策 / 写真 / 旅行</dd></div>
+              <div><dt class="kv">現在</dt><dd>プロジェクト名や短い近況</dd></div>
+            </dl>
+          </section>
+
+          <!-- Notes list (短めのメモ) -->
+          <section id="notes" class="card" aria-labelledby="notes-title" style="margin-bottom:1rem;">
+            <h2 id="notes-title" class="section-title">Notes — メモ・短文</h2>
+            <p class="small">短い断章をここに。タグでフィルタできるようにしておくと便利です。</p>
+
+            <div class="card-list" id="notesList">
+              <!-- サンプルカード（中身はあとで上書きしてください） -->
+              <article class="note-card" aria-labelledby="note-1">
+                <h3 id="note-1" style="margin:0;font-size:1rem">メモのタイトル（例）</h3>
+                <div class="note-meta">
+                  <span>2025-08-17</span>
+                  <span>#S2T</span>
+                  <span>#実験ノート</span>
+                </div>
+                <p style="margin:.5rem 0 0;color:var(--muted)">ここに短い要約。詳細は個別ページへ。</p>
+              </article>
+
+              <!-- 複製してノートを増やしてください -->
+            </div>
+
+          </section>
+
+          <!-- Essays / 長文 -->
+          <section id="essays" class="card" aria-labelledby="essays-title" style="margin-bottom:1rem;">
+            <h2 id="essays-title" class="section-title">Essays — 長文・考察</h2>
+            <p class="small">論考や長文を置く場所。各記事に要約（abstract）と脚注をつけてください。</p>
+            <!-- ここに記事カードやリンクを並べる -->
+          </section>
+
+          <!-- Projects -->
+          <section id="projects" class="card" aria-labelledby="projects-title" style="margin-bottom:1rem;">
+            <h2 id="projects-title" class="section-title">Projects — 実装・成果</h2>
+            <p class="small">プロジェクトの目的、使用技術、成果とリンクを簡潔に。</p>
+            <!-- プロジェクトカード群 -->
+          </section>
+
+        </div>
+
+        <!-- サイドバー -->
+        <aside class="sidebar" role="complementary" aria-label="サイドバー">
+          <div class="card">
+            <h3 class="section-title">Quick links</h3>
+            <div class="link-list">
+              <a href="#about">About</a>
+              <a href="#notes">Notes</a>
+              <a href="#projects">Projects</a>
+              <a href="#essays">Essays</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="section-title">Profile</h3>
+            <p class="small">短い一行プロフィール。GitHub/Twitter等のリンクを下に。</p>
+            <div style="margin-top:.6rem;display:flex;gap:.5rem;flex-wrap:wrap">
+              <a class="btn" href="https://twitter.com/yourhandle" target="_blank" rel="noopener">Twitter</a>
+              <a class="btn" href="https://github.com/yourhandle" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="section-title">Search & Tags</h3>
+            <!-- ここに簡易タグクラウドや検索フォームを後で追加すると便利 -->
+            <p class="small">タグ: <span class="kv">S2T</span> <span class="kv">写真</span> <span class="kv">旅行</span></p>
+          </div>
+
+          <div id="links" class="card">
+            <h3 class="section-title">Links</h3>
+            <div class="link-list">
+              <a href="mailto:you@example.com" id="contact" rel="noopener">Email</a>
+              <a href="/feed.xml">RSS</a>
+              <a href="/sitemap.xml">Sitemap</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="footer">
+        <div>© <span id="year"></span> あなたの名前 — All rights reserved.</div>
+        <div class="small">Built as a minimal, editable static template.</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- モバイル用メニュー（toggle） -->
+  <div id="mobileMenu" aria-hidden="true" style="display:none;position:fixed;inset:0;padding:2rem;background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.85));z-index:60">
+    <nav style="display:flex;flex-direction:column;gap:1rem">
+      <a href="#home" onclick="toggleMenu()">Home</a>
+      <a href="#about" onclick="toggleMenu()">About</a>
+      <a href="#notes" onclick="toggleMenu()">Notes</a>
+      <a href="#projects" onclick="toggleMenu()">Projects</a>
+      <a href="#links" onclick="toggleMenu()">Links</a>
+      <a href="#contact" onclick="toggleMenu()">Contact</a>
+    </nav>
+  </div>
+
+<script>
+  // 年の自動表示
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ハンバーガー・メニュー
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function toggleMenu(){
+    const open = mobileMenu.style.display !== 'none';
+    if(open){
+      mobileMenu.style.display = 'none';
+      menuToggle.setAttribute('aria-expanded','false');
+    } else {
+      mobileMenu.style.display = 'block';
+      menuToggle.setAttribute('aria-expanded','true');
+    }
+  }
+  menuToggle.addEventListener('click', toggleMenu);
+
+  // テンプレート例: Notes を JS で追加する簡易サンプル（外部CMSを使う場合は不要）
+  // const notes = [
+  //   {title:'実験メモ 1', date:'2025-08-17', tags:['S2T','実験'], summary:'結果の要約...' },
+  // ];
+  // const list = document.getElementById('notesList');
+  // notes.forEach(n => {
+  //   const a = document.createElement('article');
+  //   a.className = 'note-card';
+  //   a.innerHTML = `<h3 style="margin:0">${n.title}</h3>
+  //     <div class="note-meta"><span>${n.date}</span><span>#${n.tags.join('</span><span>#')}</span></div>
+  //     <p style="margin:.5rem 0 0;color:var(--muted)">${n.summary}</p>`;
+  //   list.appendChild(a);
+  // });
+
+  // アクセシビリティ: フォーカス時の視認性向上（簡易）
+  document.addEventListener('keyup', (e) => {
+    if(e.key === 'Tab') document.body.classList.add('user-is-tabbing');
+  });
+</script>
+</body>
+</html>
