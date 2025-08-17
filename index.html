@@ -1,112 +1,30 @@
-<!doctype html>
-<html lang="ja">
+<!doctype html><html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>thada's note</title>
-  <meta name="description" content="thada's note — なんかいろいろかきます。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="thada's note" />
-  <meta property="og:description" content="なんかいろいろかきます。" />
-  <meta property="og:image" content="/assets/og-image.png" />
-  <link rel="stylesheet" href="./assets/styles.css" />
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>thada's note</title>
+<link rel="stylesheet" href="assets/site.css">
+<!-- オプション：marked（本格 Markdown パーサ） -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-  <header class="site-header container" role="banner">
-    <div>
-      <h1 class="site-title">thada's note</h1>
-      <p class="site-sub">なんかいろいろかきます。</p>
-    </div>
-    <nav class="nav" aria-label="サイト内">
-      <a href="#about">About</a>
-      <a href="https://x.com/nashime239" target="_blank" rel="noopener">X</a>
-      <a href="https://github.com/t-hada" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/feed/?trk=onboarding-landing" target="_blank" rel="noopener">LinkedIn</a>
-    </nav>
-  </header>
+<header class="header">
+  <nav class="nav">
+    <a class="brand" href="index.html">thada's note</a>
+    <div class="spacer"></div>
+    <a href="index.html">Notes</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
 
-  <main class="container" id="main">
-    <!-- 最新ノート一覧 -->
-    <section class="card" aria-label="Notes">
-      <h2 class="section-title">Notes</h2>
-      <ul id="note-list" class="list" aria-live="polite"></ul>
-      <noscript>JavaScript を有効にするとノート一覧が表示されます。</noscript>
-    </section>
+<main class="container">
+  <h1 class="main-title">Notes</h1>
+  <div class="subtle">学習・作業メモの流れる一覧。Markdown を置くだけで更新。</div>
 
-    <!-- About -->
-    <section id="about" class="card" aria-labelledby="about-title" style="margin-top:1rem;">
-      <h2 id="about-title" class="section-title">About — 私について</h2>
-      <p class="small">
-        羽田翼です。面白いことが好きです。人間はあんまり好きじゃないですが、文化の総体として人類が好きです。どうやら人類が好きなようです。
-        人生において大切なのは「情緒」だと思っています。胸を張って死ぬために頑張って生きています。左利きです。
-      </p>
-      <dl style="margin-top:.6rem;color:var(--muted);font-size:.95rem">
-        <div><dt class="kv">関心</dt><dd>人文化学 / 自然科学</dd></div>
-        <div><dt class="kv">現在</dt><dd>ピクシーダストテクノロジーズというところで働いています。</dd></div>
-      </dl>
-      <div class="hr"></div>
-      <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
-        <a class="btn" href="mailto:br121089@gmail.com">メールで連絡</a>
-        <a class="btn" href="https://www.linkedin.com/feed/?trk=onboarding-landing" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://x.com/nashime239" target="_blank" rel="noopener">X (DM)</a>
-        <span class="badge">連絡は上記からどうぞ</span>
-      </div>
-    </section>
+  <section class="card">
+    <div id="notes-list" class="list" aria-live="polite"></div>
+  </section>
+</main>
 
-    <!-- Profile quick links -->
-    <section class="card" style="margin-top:1rem;">
-      <h3 class="section-title">Profile</h3>
-      <p class="small">暇なら見てください。</p>
-      <div style="margin-top:.6rem;display:flex;gap:.5rem;flex-wrap:wrap">
-        <a class="btn" href="https://x.com/nashime239" target="_blank" rel="noopener">Twitter(自称X)</a>
-        <a class="btn" href="https://github.com/t-hada" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </section>
-
-    <p class="container footer">© thada — built with plain HTML/JS.</p>
-  </main>
-
-  <script>
-  // Utilities
-  const fmtDate = (iso) => {
-    const d = new Date(iso); if (isNaN(d)) return iso;
-    const y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,'0'), da = String(d.getDate()).padStart(2,'0');
-    return `${y}-${m}-${da}`;
-  };
-  function createItem(n){
-    const li = document.createElement('li');
-    li.className = 'item';
-    const a = document.createElement('a');
-    a.href = `note.html?slug=${encodeURIComponent(n.slug)}`;
-    a.style.textDecoration = 'none'; a.style.flex = '1';
-    const h = document.createElement('h3'); h.className='title'; h.textContent = n.title || n.slug;
-    const t = document.createElement('time'); t.dateTime = n.date; t.textContent = fmtDate(n.date);
-    const wrap = document.createElement('div'); wrap.style.display='flex'; wrap.style.justifyContent='space-between'; wrap.style.width='100%';
-    wrap.appendChild(h); wrap.appendChild(t);
-    a.appendChild(wrap);
-    li.appendChild(a);
-    if (n.tags && n.tags.length){
-      const tagWrap = document.createElement('div'); tagWrap.style.display='flex'; tagWrap.style.gap='.4rem'; tagWrap.style.marginTop='.3rem';
-      n.tags.forEach(tag=>{ const s=document.createElement('span'); s.className='badge'; s.textContent=tag; tagWrap.appendChild(s); });
-      li.appendChild(tagWrap);
-    }
-    return li;
-  }
-  async function loadNotes(){
-    try{
-      const res = await fetch('./notes/index.json', {cache:'no-store'});
-      if(!res.ok) throw new Error('index.json not found');
-      const data = await res.json();
-      const list = document.getElementById('note-list');
-      list.innerHTML = '';
-      data.notes.sort((a,b)=> new Date(b.date)-new Date(a.date));
-      data.notes.forEach(n=> list.appendChild(createItem(n)));
-    }catch(e){
-      const list = document.getElementById('note-list');
-      list.innerHTML = '<li class="item"><span>ノートの目録 (notes/index.json) が見つかりません。</span></li>';
-    }
-  }
-  loadNotes();
-  </script>
-</body>
-</html>
+<footer class="container footer">© 2025 thada</footer>
+<script src="assets/site.js"></script>
+</body></html>
