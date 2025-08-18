@@ -1,0 +1,4 @@
+- CTC
+- PCA白色化
+- ZCA白色化
+- batch
