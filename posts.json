@@ -1,10 +1,10 @@
 [
   {
-    "slug": "hello-world",
-    "title": "はじめに — サイト方針と設計メモ",
-    "date": "2025-08-17",
-    "tags": ["setup","meta"],
-    "excerpt": "黒ベースの簡易ブログ兼ノート。Markdown を置くだけで更新。"
+    "slug": "dl_pipeline",
+    "title": "機械学習のパイプラインについて",
+    "date": "2025-08-23",
+    "tags": [deep Learning],
+    "excerpt": "一般論としての機械学習のパイプラインについて考える。"
   },
   {
     "slug": "pca",
