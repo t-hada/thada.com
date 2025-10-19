@@ -1,0 +1,289 @@
+/*
+  New stylesheet for thada.com
+  Inspired by the theme from test_files/main.css
+*/
+
+:root {
+  --bg-color: #1c1c1d;
+  --text-color: #e8e8e8;
+  --text-color-light: #828282;
+  --theme-color: #2698ba;
+  --hover-color: #38b6e8;
+  --divider-color: #424246;
+  --card-bg-color: #212529;
+  --footer-bg-color: #1c1c1d;
+  --footer-text-color: #e8e8e8;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* --- Navigation --- */
+.navbar {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--divider-color);
+  background-color: rgba(28, 28, 29, 0.85);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-links a, .lang-switch {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: var(--text-color);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 1rem;
+}
+
+.nav-links a:hover, .lang-switch:hover {
+  color: var(--hover-color);
+}
+
+/* --- About Section --- */
+.about {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: start;
+}
+
+.profile-pic img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 8px;
+  border: 3px solid var(--divider-color);
+}
+
+.profile-text h1 {
+  font-size: 2.5rem;
+  color: var(--theme-color);
+  margin-bottom: 1rem;
+}
+
+.profile-text .bio {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.social-links {
+  margin-top: 2rem;
+}
+
+.social-links a {
+  margin-right: 1.5rem;
+  color: var(--text-color-light);
+  text-decoration: none;
+  font-size: 1.5rem; /* Icon size */
+}
+
+.social-links a:hover {
+  color: var(--hover-color);
+}
+
+.jp-name {
+  font-size: 0.7em;
+  color: var(--text-color-light);
+  font-weight: normal;
+}
+
+/* --- Publications Section --- */
+.publications {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  border-top: 1px solid var(--divider-color);
+}
+
+.publications h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: var(--theme-color);
+}
+
+#notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.item {
+  background: var(--card-bg-color);
+  border: 1px solid var(--divider-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  border-color: var(--theme-color);
+}
+
+.item h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.item .meta {
+  font-size: 0.8rem;
+  color: var(--text-color-light);
+}
+
+.item .subtle {
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+  margin-top: 0.5rem;
+}
+
+.tag {
+    display: inline-block;
+    border: 1px solid var(--divider-color);
+    padding: .1rem .45rem;
+    border-radius: 999px;
+    font-size: 11px;
+    margin-right: 6px;
+}
+
+/* --- Footer --- */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 4rem;
+  border-top: 1px solid var(--divider-color);
+  color: var(--text-color-light);
+  font-size: 0.9rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .profile-pic {
+    margin-bottom: 2rem;
+  }
+  .profile-pic img {
+    margin: 0 auto;
+  }
+}
+
+/* --- Prose (for Markdown content) --- */
+.prose {
+    max-width: 720px;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    color: var(--text-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.prose h1 {
+    font-size: 2.2rem;
+    border-bottom: 1px solid var(--divider-color);
+    padding-bottom: 0.5rem;
+}
+
+.prose h2 {
+    font-size: 1.8rem;
+    border-bottom: 1px solid var(--divider-color);
+    padding-bottom: 0.4rem;
+}
+
+.prose h3 {
+    font-size: 1.4rem;
+}
+
+.prose p, .prose ul, .prose ol {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.prose a {
+    color: var(--theme-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--theme-color);
+}
+
+.prose a:hover {
+    color: var(--hover-color);
+    border-bottom-color: var(--hover-color);
+}
+
+.prose code {
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    border-radius: 3px;
+}
+
+.prose pre {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--divider-color);
+    padding: 1em;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.prose pre code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    background: none;
+}
+
+.prose blockquote {
+    border-left: 3px solid var(--theme-color);
+    padding-left: 1em;
+    margin-left: 0;
+    color: var(--text-color-light);
+}
+
+.prose ul, .prose ol {
+    padding-left: 2em;
+}
+
+.prose img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}

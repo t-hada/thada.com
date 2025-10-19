@@ -1,30 +1,78 @@
-<!doctype html><html lang="ja">
+<!DOCTYPE html>
+<html lang="ja">
+
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>thada's note</title>
-<link rel="stylesheet" href="assets/site.css">
-<!-- オプション：marked（本格 Markdown パーサ） -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-lang-key="page_title">Tsubasa Hada</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Icon Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
 </head>
+
 <body>
-<header class="header">
-  <nav class="nav">
-    <a class="brand" href="index.html">thada's note</a>
-    <div class="spacer"></div>
-    <a href="index.html">Notes</a>
-    <a href="about.html">About</a>
-  </nav>
-</header>
 
-<main class="container">
-  <h1 class="main-title">Notes</h1>
-  <div class="subtle">なんかいろいろ書きます。</div>
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-content">
+      <a href="#" class="nav-brand" data-lang-key="nav_brand_title">Tsubasa Hada</a>
+      <nav class="nav-links">
+        <a href="#about" data-lang-key="nav_about">About</a>
+        <a href="#publications" data-lang-key="nav_publications">Publications</a>
+        <button id="lang-switch" class="lang-switch" data-lang-toggle="en" data-lang-key="language_switcher">EN</button>
+      </nav>
+    </div>
+  </header>
 
-  <section class="card">
-    <div id="notes-list" class="list" aria-live="polite"></div>
-  </section>
-</main>
+  <!-- Main Content -->
+  <main class="container">
 
-<footer class="container footer">© 2025 thada</footer>
-<script src="assets/site.js"></script>
-</body></html>
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="profile-grid">
+        <div class="profile-text">
+          <h1 data-lang-key="about_title">Tsubasa Hada <span class="jp-name">(羽田 翼)</span></h1>
+          <p class="bio" data-lang-key="bio">
+            Loading bio...
+          </p>
+          <div class="social-links">
+            <a href="https://github.com/t-hada" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/nashime239" target="_blank" title="Twitter (X)"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="profile-pic">
+          <img src="assets/img/profile.jpeg" alt="Profile Picture">
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="publications">
+      <h2 data-lang-key="publications_title">Publications</h2>
+      <div id="notes-list">
+        <!-- Publication items will be rendered here by app.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p data-lang-key="footer_copyright">© 2025 Tsubasa Hada</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,16 +1,11 @@
 [
   {
-    "slug": "dl_pipeline",
-    "title": "機械学習のパイプラインについて",
-    "date": "2025-08-23",
-    "tags": ["deep Learning"],
-    "excerpt": "一般論としての機械学習のパイプラインについて考える。"
-  },
-  {
-    "slug": "pca",
-    "title": "PCA白色化に付いて理解する",
-    "date": "2025-08-17",
-    "tags": ["image recognition", "Preprocessing"],
-    "excerpt": "画像認識の前処理として用いられるPCA白色化に付いて理解する"
+    "slug": "kintaikyo",
+    "title_ja": "錦帯橋の独自性と技術的ルーツに関する研究―独立性易と中国木造技術の影響を中心に―",
+    "title_en": "Research on the Uniqueness and Technical Roots of Kintai Bridge - Focusing on the Influence of Dokuryu Shoeki and Chinese Wooden Construction Techniques",
+    "date": "2025-10-19",
+    "tags": ["history"],
+    "excerpt_ja": "錦帯橋は1673年に岩国に架けられた五連の木造アーチ橋で、その技術と美観は世界的にも高く評価されている。本研究は、これまで思想的影響とされてきた発想のルーツを再検討し、中国の木造技術が長崎を通じて伝わり、橋の建設に活用された可能性を示した。特に、児玉九郎右衛門が独立性易や唐人技術者と交流し技術を学んだことが、橋の成立に大きく寄与したと考えられる。ただし、具体的な交流の詳細は未解明であり、今後は長崎唐人社会や建築記録の調査が必要である。錦帯橋は国際的技術交流の成果であり、その文化的価値の再評価が重要である。",
+    "excerpt_en": "The Kintai Bridge, a five-span wooden arch bridge built in Iwakuni in 1673, is highly acclaimed worldwide for its technology and aesthetic beauty. This research re-examines the roots of its conception, which had been attributed to philosophical influences, and suggests the possibility that Chinese wooden construction techniques were transmitted through Nagasaki and utilized in the bridge's construction. In particular, it is believed that Kuranosuke Kodama's interaction with and learning from Dokuryu Shoeki and Chinese engineers significantly contributed to the bridge's creation. However, the specific details of these exchanges remain unclear, necessitating future investigation into the Chinese community in Nagasaki and architectural records. The Kintai Bridge is a product of international technical exchange, and a re-evaluation of its cultural value is important."
   }
 ]
