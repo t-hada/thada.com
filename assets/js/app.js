@@ -158,10 +158,8 @@ async function renderPost() {
     let title = meta.title || (body.match(/^#\s+(.+)$/m)?.[1]) || slug;
     document.title = `${title} — Tsubasa Hada`;
 
-    // If title was extracted from H1, remove it from body to prevent duplication
-    if (!meta.title) {
-        body = body.replace(/^#\s+(.+)$/m, '').trim();
-    }
+    // Always remove the H1 from the body to prevent duplication, as #post-title is used.
+    body = body.replace(/^#\s+(.+)/m, '').trim();
 
     // --- Convert Markdown to HTML --- 
     let html = '';
